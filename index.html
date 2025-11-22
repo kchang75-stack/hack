@@ -8,19 +8,23 @@
 </head>
 
 <script>
+    
+    function displayInput(){
+        console.log(document.getElementById("input").value)
+    }
 </script>
 <body>
-    <h1>Workout Buddy</h1>
+    <h1>Grocery</h1>
     <div> <!--this holds all the contents of the page-->
-         <div> <!--this one of the containers-->
-
-         </div>
-
-         <div> <!--this is the video of the containers-->
-         </div>
-         <div> <!--this one of the containers-->
-
-         </div>
+        <div> <!--nav bar--></div>
+        <div> <!--this is one of the containers-->
+            
+            <label for="grocery">Enter Grocery Item</label>
+            <input type="text" id="input" name="input">
+            <button onclick="displayInput()">Get Input</button>
+        </div>
+        <div> <!--this is one of the containers--></div>
+        <div> <!--this is one of the containers--></div>
     </div>
 
 
