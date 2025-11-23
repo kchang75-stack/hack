@@ -17,7 +17,7 @@ class TraderJoesParser(ParserBase):
         names = driver.find_elements(By.CSS_SELECTOR, "a.SearchResultCard_searchResultCard__titleLink__2nz6x")
         prices = driver.find_elements(By.CSS_SELECTOR, "span.ProductPrice_productPrice__price__3-50j")
         
-        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "trader_joes", "query": query} for name, price in zip(names, prices)]
+        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "Trader Joe's", "query": query} for name, price in zip(names, prices)]
 
         filtered_list = []
 
