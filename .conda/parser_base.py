@@ -4,10 +4,9 @@ class ParserBase(ABC):
     def __init__ (self, session=None):
         self.session = session
 
-    def get_name(html):
+    def get_name(self, html):
         raise NotImplementedError
 
-
     
-    def get_price(html):
+    def get_price(self, html):
         raise NotImplementedError
