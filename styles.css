@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family:'Times New Roman', Times, serif
     padding 40px;
@@ -32,4 +33,58 @@ button {
 #results {
     margin-top: 25px;
     font-size: 18px;
+=======
+
+#global {
+    display: flex;
+    flex-direction: column;
+    height: 900px;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 50%;
+}
+
+#groceryContainer {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+#storeContainer {
+
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.storeButton {
+    height: 20px;
+    width: 20px;
+    margin-top: 15px;
+    border-radius: 100%;
+}
+
+.storeButton:hover {
+    background-color: greenyellow;
+}
+
+#bottomLayout {
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: beige;
+>>>>>>> 33e750fa06b6959c7964f618da20f9e8e0bbc733
 }
