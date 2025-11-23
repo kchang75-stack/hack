@@ -8,28 +8,23 @@ from selenium.common.exceptions import TimeoutException
 from .parser_base import ParserBase
 
 class FreshMadisonMarketParser(ParserBase):
+    
+    def get_list(self, driver, query):
 
-    @classmethod
-    def get_name(self, driver):
-        try:
-            name = WebDriverWait(driver, 10).until(
-            lambda d: (elem := d.find_element(
-                By.CSS_SELECTOR, "h1.fp-page-header.fp-page-title")
-            ).text.strip() or None
-            )
-        except TimeoutException:
-            name = "N/A"
-        return name
+        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div.fp-item-name.notranslate")))
+        names = driver.find_elements(By.CSS_SELECTOR, "div.fp-item-name.notranslate")
+        prices = driver.find_elements(By.CSS_SELECTOR, "span.fp-item-base-price")
+        
+        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "fresh_madison_market", "query": query} for name, price in zip(names, prices)]
 
+        filtered_list = []
 
-    @classmethod
-    def get_price(self, driver):
-        try:
-            price = WebDriverWait(driver, 10).until(
-            lambda d: (elem := d.find_element(
-                By.CSS_SELECTOR, "span.fp-item-base-price").text.strip() or None
-            )
-            )
-        except TimeoutException:
-            price = "N/A"
-        return price
+        for product in product_list:
+            item_name_lower = product["itemName"].lower()
+            if (
+                query in item_name_lower
+                and not any(item["itemName"].lower() == item_name_lower for item in filtered_list)
+            ):
+                filtered_list.append(product)
+
+        return filtered_list
