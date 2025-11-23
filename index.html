@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Bro</title>
-    <style href="styles.css"> </style>
+    <title>Grocery Sales Tracker</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-    <div> <!--this holds all the contents of the page-->
-         <div> <!--this one of the containers-->
+    <h1>Grocery Item Search</h1>
 
+    <body style="background-color:lightblue;"
+         <div class="search-bar"> <!--this one of the containers-->
+            <input
+            type = "contents"
+            id="searchIntake"
+            placeholder ="Search your groceries"
+            >
+            <button onclick = "searchGrocery()">search</button>
          </div>
 
-         <div> <!--this one of the containers-->
-
-         </div>
-    </div>
-    <h1>Workout Buddy</h1>
-
-    
+    <div id="results"></div>
+    <script src="App.js"></script>
 </body>
-</html>>
+</html>
