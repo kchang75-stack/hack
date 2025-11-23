@@ -54,16 +54,9 @@
         let all_addresses = ["test", "test"];
         let fake_results = ["item1", "item2", "item3"];
 
-
-        async function fetchData() {
-            const response = await fetch('/api/data');
-            // Now 'response' holds the Response object
-        }
-        
         async function makeList(input){
             let element = document.getElementById("queriedList");
             // context = "find/" + input
-            
             
             await fetch("/test/" + input)
                 .then(response => response.json())
