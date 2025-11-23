@@ -12,7 +12,7 @@ driver.get(url)
 product_name = "N/A"
 product_price = "N/A"
 
-parser = TraderJoesParser()
+parser = TargetParser()
 
 product_name = parser.get_name(driver)
 product_price = parser.get_price(driver)
