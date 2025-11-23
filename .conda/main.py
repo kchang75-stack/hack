@@ -37,8 +37,4 @@ def test(search):
 
 
 if __name__ == "__main__":
-<<<<<<< Updated upstream
     app.run(host="10.141.178.161",port=80, debug=True)
-=======
-    app.run(host="192.168.56.1",port=80, debug=True)
->>>>>>> Stashed changes
