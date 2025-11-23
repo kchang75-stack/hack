@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grocery Sales Tracker</title>
-    <link rel="stylesheet" href="stylestest.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylestest.css') }}" />
 </head>
 
 <body>
@@ -59,18 +59,15 @@
             let element = document.getElementById("queriedList");
             // context = "find/" + input
             context = "test"
-            fetch('10.140.189.214/' + context)
-                .then(response => {
-                    console.log("rans")
-                    if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                    }
-                })
+                
+            fetch("/test")
+                .then(response => response.json())
                 .then(data => {
-                    console.log('Data received:', data);
-                    fake_results.push(data)
-                    // Use the received data to update your UI
-                })
+                    console.log("Value from Flask:", data.value);
+                    fake_results.push(data.value)
+                });
+
+                
             // fetch(IP:PORT, context)
             // this should return all item prices in an Array?
             string = ""

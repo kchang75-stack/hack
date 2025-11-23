@@ -71,6 +71,12 @@ input {
     background: #fafafa;
 }
 
+.queriedItems {
+    background-color: white;
+    margin-top: 0px;
+    
+}
+
 footer {
     background: white;
     text-align: center;
