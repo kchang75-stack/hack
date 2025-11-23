@@ -8,10 +8,28 @@ from selenium.common.exceptions import TimeoutException
 from .parser_base import ParserBase
 
 class TargetParser(ParserBase):
-    @classmethod
-    def get_name(driver):
-        return driver.find_element(By.CSS_SELECTOR, "[class*='title']").text
 
     @classmethod
-    def get_price(driver):
-        return driver.find_element(By.CSS_SELECTOR, "[class*='price']").text
+    def get_name(self, driver):
+        try:
+            name = WebDriverWait(driver, 10).until(
+            lambda d: (elem := d.find_element(
+                By.CSS_SELECTOR, "h1[data-test='product-title']")
+            ).text.strip() or None
+            )
+        except TimeoutException:
+            name = "N/A"
+        return name
+
+
+    @classmethod
+    def get_price(self, driver):
+        try:
+            price = WebDriverWait(driver, 10).until(
+            lambda d: (elem := d.find_element(
+                By.CSS_SELECTOR, "[data-test='product-price']").text.strip() or None
+            )
+            )
+        except TimeoutException:
+            price = "N/A"
+        return price

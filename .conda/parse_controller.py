@@ -1,8 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from parsers.trader_joes_parser import TraderJoesParser
-from parsers.target_parser import TargetParser
+from parsers import *
 
 url = input("Enter URL: ")
 
@@ -12,7 +11,7 @@ driver.get(url)
 product_name = "N/A"
 product_price = "N/A"
 
-parser = TraderJoesParser()
+parser = CapCentreMarketParser()
 
 product_name = parser.get_name(driver)
 product_price = parser.get_price(driver)
