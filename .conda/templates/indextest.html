@@ -55,26 +55,34 @@
         let fake_results = ["item1", "item2", "item3"];
 
 
-        function makeList(input){
+        async function fetchData() {
+            const response = await fetch('/api/data');
+            // Now 'response' holds the Response object
+        }
+        
+        async function makeList(input){
             let element = document.getElementById("queriedList");
             // context = "find/" + input
             
-                
-            fetch("/test/" + input)
+            
+            await fetch("/test/" + input)
                 .then(response => response.json())
                 .then(data => {
                     console.log("Value from Flask:", data.value);
                     fake_results.push(data.searchQ)
+                    console.log("before: " + fake_results)
                 });
+
+            string = ""
+            for(i = 0; i < fake_results.length; i++) {
+                console.log("after: " + fake_results)
+                string += "<p class=\"queriedItems\">" + fake_results[i] + "</p>";
+            }
 
                 
             // fetch(IP:PORT, context)
             // this should return all item prices in an Array?
-            string = ""
-            for(i = 0; i < fake_results.length; i++) {
-                string += "<p class=\"queriedItems\">" + fake_results[i] + "</p>";
-            }
-
+            
             element.innerHTML = string;
         }
 
