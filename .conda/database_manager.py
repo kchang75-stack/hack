@@ -11,7 +11,7 @@ class DatabaseManager:
 
         cur.execute(f"DROP TABLE IF EXISTS {database_name}")
         first_dict = item_list[0]
-        create_table_sql = f"CREATE TABLE IF NOT EXISTS {database_name} (itemName TEXT, itemPrice REAL, storeName TEXT)"
+        create_table_sql = f"CREATE TABLE IF NOT EXISTS {database_name} (itemName TEXT, itemPrice REAL, storeName TEXT, query TEXT)"
 
         cur.execute(create_table_sql)
 
@@ -40,30 +40,31 @@ class DatabaseManager:
             JOIN (
                 SELECT itemName, MIN(itemPrice) AS minPrice
                 FROM {database}
-                GROUP BY itemName
+                GROUP BY query
             ) m
             ON p.itemName = m.itemName AND p.itemPrice = m.minPrice
             ORDER BY p.itemName ASC
         """
 
         cur.execute(query)
+
         result = cur.fetchall()
         cur.close()
         return result
 
     @staticmethod   
-    def get_prices_by_product(database, name):
+    def get_prices_by_product(database, query):
         conn = sqlite3.connect(database + ".db")
         cur = conn.cursor()
 
         query = f"""
-            SELECT itemName, itemPrice, storeName
+            SELECT itemName, itemPrice, storeName, query
             FROM {database}
             WHERE itemName = ?
             ORDER BY itemPrice ASC
         """
 
-        cur.execute(query, (name,))
+        cur.execute(query, (query,))
         result = cur.fetchall()
         conn.close()
         return result
