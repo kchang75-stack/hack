@@ -65,15 +65,16 @@
                 .then(response => response.json())
                 .then(data => {
                     alert("Value from Flask: " + data.value);
-                    item_names.push(data.Item_Name);
-                    item_prices.push(data.Item_Price);
-                    store_names.push(data.Store_Name);
-                    query_values.push(data.Query_Values);
+                    console.log("RAW DATA:", data);
+                    item_names.push(...data.Item_Name);
+                    item_prices.push(...data.Item_Price);
+                    store_names.push(...data.Store_Name);
+                    query_values.push(...data.Query_Value);
                 });
 
-            string = ""
-            for(i = 0; i < 5; i++) {
-                console.log("after: " + fake_results)
+            let string = ""
+            for(i = 0; i < item_names.length; i++) {
+                console.log("after: " + item_names)
                 string += "<p class=\"queriedItems\">" + item_names[i] + "</p>";
             }
 

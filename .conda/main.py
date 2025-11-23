@@ -20,17 +20,17 @@ def test(search):
 
     parse(search)
 
-    queries = [query for query in search.split(", ") if query.split()]
-    for query in queries:
-        top_five = DatabaseManager.get_prices_by_product(query, query)[:5]
+
+    top_five = DatabaseManager.get_prices_by_product(search, search)
+    print(top_five)
 
     data = {
         # "searchQ": search,
         "value": 4,
-        "Item_Name": [item["itemName"] for item in top_five],
-        "Item_Price": [item["itemPrice"] for item in top_five],
-        "Store_Name": [item["storeName"] for item in top_five],
-        "Query_Value": [item["query"] for item in top_five]
+        "Item_Name": [item[0] for item in top_five],
+        "Item_Price": [item[1] for item in top_five],
+        "Store_Name": [item[2] for item in top_five],
+        "Query_Value": [item[3] for item in top_five]
     }
 
     return jsonify(data)
