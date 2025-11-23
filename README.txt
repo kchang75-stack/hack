@@ -1,4 +1,5 @@
-Lifting form analyzer!
+Mad Snacks!
 
-This program analyzes your recording of your lifts to help you improve your lifting form!
-The program makes use of Meta's SAM3 model
+Generate a report of the least expensive stores to buy your favorite items, whether snacks, produce, or anything else!
+
+*Future support for additional websites and features intended*
