@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from parsers import *
 from parse_search import *
+from database_manager import DatabaseManager
 
 product_query = input("Enter product search query: ")
 
@@ -16,3 +17,7 @@ if not product_list:
     print("No products found for the given queries.")
 else:
     print("Products found.")
+    try:
+        DatabaseManager.create_database(product_list, product_query)
+    except:
+        print("Error creating database for query: ", product_query)

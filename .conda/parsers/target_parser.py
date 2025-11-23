@@ -11,8 +11,6 @@ class TargetParser(ParserBase):
 
     def get_list(self, driver, query):
 
-        print("Parsing Target for query:", query)
-
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div[class^='styles_ndsTruncate']")))
         names = driver.find_elements(By.CSS_SELECTOR, "div[class^='styles_ndsTruncate']")
         prices = driver.find_elements(By.CSS_SELECTOR, "span[class*='sc-67b4d80d-3']")
