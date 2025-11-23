@@ -12,10 +12,14 @@ def get_user(user_id):
 
     return render_template("indextest.html")
 
-@app.route("/test")
-def test():
-    value = 4
-    return jsonify({"value": value})
+@app.route("/test/<search>")
+def test(search):
+    data = {
+        "searchQ": search,
+        "value": 4
+    }
+    print(search)
+    return jsonify(data)
 
 
 if __name__ == "__main__":
