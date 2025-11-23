@@ -46,7 +46,8 @@ button {
     justify-content: space-evenly;
     padding-bottom: 25px;
     padding-top: 10px;
-    background-color: aquamarine;
+    background-image: linear-gradient(to right, rgb(10, 200, 127), rgb(118, 214, 182));
+    border: 2px, outset, black;
 }
 
 .mainContainer {
@@ -64,7 +65,7 @@ button {
 }
 
 #storeContainer {
-
+    width: 50%;
 }
 
 .buttonContainer {
@@ -77,6 +78,8 @@ button {
     width: 20px;
     margin-top: 15px;
     border-radius: 100%;
+    font-size:50px;
+    
 }
 
 .storeButton:hover {
