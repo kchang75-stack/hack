@@ -58,13 +58,13 @@
         function makeList(input){
             let element = document.getElementById("queriedList");
             // context = "find/" + input
-            context = "test"
+            
                 
-            fetch("/test")
+            fetch("/test/" + input)
                 .then(response => response.json())
                 .then(data => {
                     console.log("Value from Flask:", data.value);
-                    fake_results.push(data.value)
+                    fake_results.push(data.searchQ)
                 });
 
                 
