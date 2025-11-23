@@ -6,13 +6,8 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/find/<user_id>")
-def get_user(user_id):
-    data = {
-        "item": user_id,
-        "lowestPrice": "0",
-    }
-
+@app.route("/")
+def loadHTML():
     return render_template("indextest.html")
 
 @app.route("/test/<search>")
@@ -37,4 +32,4 @@ def test(search):
 
 
 if __name__ == "__main__":
-    app.run(host="192.168.56.1",port=80, debug=True)
+    app.run(host="10.140.189.214",port=80, debug=True)
