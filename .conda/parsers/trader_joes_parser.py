@@ -24,7 +24,7 @@ class TraderJoesParser(ParserBase):
         for product in product_list:
             item_name_lower = product["itemName"].lower()
             if (
-                query in item_name_lower
+                query.replace("_", ' ') in item_name_lower in item_name_lower
                 and not any(item["itemName"].lower() == item_name_lower for item in filtered_list)
             ):
                 filtered_list.append(product)

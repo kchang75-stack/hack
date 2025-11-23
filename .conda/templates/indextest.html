@@ -73,7 +73,7 @@
             await fetch("/test/" + input)
                 .then(response => response.json())
                 .then(data => {
-                    // alert("Value from Flask: " + data.value);
+   
                     console.log("RAW DATA:", data);
                     item_names.push(...data.Item_Name);
                     item_prices.push(...data.Item_Price);

@@ -8,6 +8,7 @@ class DatabaseManager:
 
         conn = sqlite3.connect("prices.db")
         cur = conn.cursor()
+        
 
         cur.execute(f"DROP TABLE IF EXISTS {table}")
         first_dict = item_list[0]
@@ -54,38 +55,24 @@ class DatabaseManager:
 
 
     @staticmethod   
-    def get_prices_by_product(table_name, product):
+    def get_prices_by_product(table_name):
+        
         conn = sqlite3.connect("prices.db")
         cur = conn.cursor()
 
         # Safely quote table name
         query = f"""
             SELECT itemName, itemPrice, storeName, "query"
-            FROM "{table_name}"
+            FROM {table_name}
             WHERE "query" = ?
             ORDER BY itemPrice ASC
         """
 
-        cur.execute(query, (product,))
+        cur.execute(query, (table_name,))
+
         result = cur.fetchmany(10)
         conn.close()
         return result
-    # @staticmethod   
-    # def get_prices_by_product(table, queryVal):
-    #     conn = sqlite3.connect("prices.db")
-    #     cur = conn.cursor()
-
-    #     query = f"""
-    #         SELECT itemName, itemPrice, storeName, "query"
-    #         FROM {table}
-    #         WHERE "query" = ?
-    #         ORDER BY itemPrice ASC
-    #     """
-
-    #     cur.execute(query, (queryVal,))
-    #     result = cur.fetchmany(10)
-    #     conn.close()
-    #     return result
 
     @staticmethod
     def convert_to_df(table):

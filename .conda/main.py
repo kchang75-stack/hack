@@ -13,15 +13,18 @@ def loadHTML():
 @app.route("/test/<search>")
 def test(search):
 
+    if ' ' in search:
+            search = search.replace(' ', "_")
+
+    search = search.lower()
+
     parse(search)
 
 
-    top_five = DatabaseManager.get_prices_by_product(search, search)
+    top_five = DatabaseManager.get_prices_by_product(search)
     print(top_five)
 
     data = {
-        # "searchQ": search,
-        "value": 4,
         "Item_Name": [item[0] for item in top_five],
         "Item_Price": [item[1] for item in top_five],
         "Store_Name": [item[2] for item in top_five],

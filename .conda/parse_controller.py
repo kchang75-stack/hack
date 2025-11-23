@@ -8,11 +8,9 @@ from database_manager import DatabaseManager
 def parse(query):
     product_query = query
 
-    products = [item.strip() for item in product_query.split(",") if item.strip()]
-
     product_list = []
-    for product in products:
-        product_list.extend(search_stores(product, product_list))
+
+    product_list.extend(search_stores(product_query, product_list))
 
     if not product_list:
         print("No products found for the given queries.")
