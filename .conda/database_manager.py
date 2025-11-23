@@ -53,7 +53,7 @@ class DatabaseManager:
         return result
 
     @staticmethod   
-    def get_prices_by_product(database, query):
+    def get_prices_by_product(database, queryVal):
         conn = sqlite3.connect(database + ".db")
         cur = conn.cursor()
 
@@ -64,8 +64,8 @@ class DatabaseManager:
             ORDER BY itemPrice ASC
         """
 
-        cur.execute(query, (query,))
-        result = cur.fetchall()
+        cur.execute(query, (queryVal,))
+        result = cur.fetchmany(5)
         conn.close()
         return result
 

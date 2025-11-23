@@ -52,7 +52,10 @@
 
     <script>
         let all_addresses = ["test", "test"];
-        let fake_results = ["item1", "item2", "item3"];
+        let item_names = [];
+        let item_prices = []
+        let store_names = []
+        let query_values = []
 
 
         function makeList(input){
@@ -63,8 +66,11 @@
             fetch("/test/" + input)
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Value from Flask:", data.value);
-                    fake_results.push(data.searchQ)
+                    alert("Value from Flask: " + data.value);
+                    item_names.push(data.Item_Name);
+                    item_prices.push(data.Item_Price);
+                    store_names.push(data.Store_Name);
+                    query_values.push(data.Query_Values);
                 });
 
                 
