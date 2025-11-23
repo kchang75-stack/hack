@@ -50,11 +50,12 @@
     </footer>
 
     <script>
-        let all_addresses = [];
+        let all_addresses = ["test", "test"];
 
         function queryAddress() {
             const context = document.getElementById("address_input");
             all_addresses.push(context.value);
+            console.log(all_addresses + " " + context.value);
             context.value = "";
         }
 
@@ -69,6 +70,8 @@
             list.innerHTML = all_addresses
                 .map(addr => `<div><button onclick="addLocation('${addr}')">${addr}</button></div>`)
                 .join("");
+
+            console.log(list.innerHTML)
         }
 
         function addLocation(address) {
