@@ -1,0 +1,23 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from parsers.trader_joes_parser import TraderJoesParser
+from parsers.target_parser import TargetParser
+
+url = input("Enter URL: ")
+
+driver = webdriver.Chrome()
+driver.get(url)
+
+product_name = "N/A"
+product_price = "N/A"
+
+parser = TraderJoesParser()
+
+product_name = parser.get_name(driver)
+product_price = parser.get_price(driver)
+
+print("Product name: ", product_name)
+print("Product price: ", product_price)
+
+driver.quit()
