@@ -6,13 +6,8 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/find/<user_id>")
-def get_user(user_id):
-    data = {
-        "item": user_id,
-        "lowestPrice": "0",
-    }
-
+@app.route("/")
+def loadHTML():
     return render_template("indextest.html")
 
 @app.route("/test/<search>")

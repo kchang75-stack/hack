@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grocery Sales Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylestest.css') }}" />
+    <link rel="stylesheet" href="stylestest.css" />
 </head>
 
 <body>
@@ -43,52 +43,47 @@
     </div>
 
     <div>
-        
+        <div> <!--this should be the category--></div>
         <div id="queriedList" style="background-color: white; height: 250px;">
-            <table id="dataTable">
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Store</th>
-                    <th>Query Value</th>
-                </tr>
-            </table>
 
         </div>
     </div>
     
 
     <script>
-        let item_names = [];
-        let item_prices = []
-        let store_names = []
-        let query_values = []
+        let all_addresses = ["test", "test"];
+        let fake_results = ["item1", "item2", "item3"];
 
-        async function makeList(input){
-            let element = document.getElementById("dataTable");
+
+        function makeList(input){
+            let element = document.getElementById("queriedList");
+            const response = fetch(
+                `http://10.140.189.214:80/test/`
+            );
+            console.log(response)
             // context = "find/" + input
-            
-            await fetch("/test/" + input)
+            context = "test"
+                
+            fetch("/test")
                 .then(response => response.json())
                 .then(data => {
-                    alert("Value from Flask: " + data.value);
-                    console.log("RAW DATA:", data);
-                    item_names.push(...data.Item_Name);
-                    item_prices.push(...data.Item_Price);
-                    store_names.push(...data.Store_Name);
-                    query_values.push(...data.Query_Value);
+                    console.log("Value from Flask:", data.value);
+                    fake_results.push(data.value)
                 });
 
-            let string = ""
-            for(i = 0; i < item_names.length; i++) {
-                str1 = "<th class=\"queriedData\">" + item_names[i]+ "</th>"
-                str2 = "<th class=\"queriedData\">"+ item_prices[i] + "</th>"
-                str3 = "<th class=\"queriedData\">"+ store_names[i] + "</th>"
-                str4 = "<th class=\"queriedData\">"+ query_values[i] + "</th>"
-                string += "<tr>" + str1 + str2 + str3 + str4 + "</tr>";
+                
+            // fetch(IP:PORT, context)
+            // this should return all item prices in an Array?
+            string = ""
+            for(i = 0; i < fake_results.length; i++) {
+                string += "<p class=\"queriedItems\">" + fake_results[i] + "</p>";
             }
 
-            element.innerHTML += string;
+            element.innerHTML = string;
+        }
+
+        function helper() {
+            
         }
 
         function queryAddress() {
