@@ -43,15 +43,16 @@
     </div>
 
     <div>
-        <table id="dataTable">
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Store</th>
-                <th>Query Value</th>
-            </tr>
-        </table>
+        
         <div id="queriedList" style="background-color: white; height: 250px;">
+            <table id="dataTable">
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Store</th>
+                    <th>Query Value</th>
+                </tr>
+            </table>
 
         </div>
     </div>
@@ -64,7 +65,7 @@
         let query_values = []
 
         async function makeList(input){
-            let element = document.getElementById("queriedList");
+            let element = document.getElementById("dataTable");
             // context = "find/" + input
             
             await fetch("/test/" + input)
@@ -80,14 +81,14 @@
 
             let string = ""
             for(i = 0; i < item_names.length; i++) {
-                str1 = "<th class=\"queriedData\""+ item_names[i] + "</th>"
-                str2 = "<th class=\"queriedData\""+ item_prices[i] + "</th>"
-                str3 = "<th class=\"queriedData\""+ store_names[i] + "</th>"
-                str4 = "<th class=\"queriedData\""+ query_values[i] + "</th>"
+                str1 = "<th class=\"queriedData\">" + item_names[i]+ "</th>"
+                str2 = "<th class=\"queriedData\">"+ item_prices[i] + "</th>"
+                str3 = "<th class=\"queriedData\">"+ store_names[i] + "</th>"
+                str4 = "<th class=\"queriedData\">"+ query_values[i] + "</th>"
                 string += "<tr>" + str1 + str2 + str3 + str4 + "</tr>";
             }
 
-            element.innerHTML = string;
+            element.innerHTML += string;
         }
 
         function queryAddress() {
