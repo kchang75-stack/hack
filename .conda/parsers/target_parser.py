@@ -15,7 +15,7 @@ class TargetParser(ParserBase):
         names = driver.find_elements(By.CSS_SELECTOR, "div[class^='styles_ndsTruncate']")
         prices = driver.find_elements(By.CSS_SELECTOR, "span[class*='sc-67b4d80d-3']")
         
-        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "target", "query": query} for name, price in zip(names, prices)]
+        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "Target", "query": query} for name, price in zip(names, prices)]
 
         filtered_list = []
 

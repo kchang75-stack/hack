@@ -15,7 +15,7 @@ class CapCentreMarketParser(ParserBase):
         names = driver.find_elements(By.CSS_SELECTOR, "div.fp-item-name.notranslate")
         prices = driver.find_elements(By.CSS_SELECTOR, "span.fp-item-base-price")
         
-        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "capital_centre_market", "query": query} for name, price in zip(names, prices)]
+        product_list = [{"itemName": name.text, "itemPrice": price.text[1:], "storeName": "Capital Centre Market", "query": query} for name, price in zip(names, prices)]
 
         filtered_list = []
 
