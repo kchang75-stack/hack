@@ -5,29 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Bro</title>
     <style href="styles.css"> </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <script>
-    
-    function displayInput(){
-        console.log(document.getElementById("input").value)
+    let all_addresses = [];
+
+
+    // gets availabe addresses frmo the back end, will send to display address to display
+    function queryAddress(){
+        const context = document.getElementById("address_input")
+        all_addresses.push(context.value)
+        console.log(context.value)
+        // queriedAddresses = fetch("ip:port")
+        // // this gives us the avaliable address
+        // // then
+        // for(storeAddress=queryAddress[i]; storeAddress!=null; i++) {
+        //     if(i == queryAddress.length) break;
+
+
+        // }
+    }
+
+    // displays all addresses as buttons
+    function displayAddresses() {
+        if(all_addresses.length <= 0) {
+            // throw an error
+            console.log("no locations");
+        }
+        const htmlLocations = [];
+        const locations = document.getElementById("storeList");
+        for(i = 0; i < all_addresses.length; i++) {
+            htmlLocations.push(createLocationAdd(all_addresses[i]))
+        }
+        
+        locations.innerHTML = htmlLocations;
+    }
+
+    // helper function of display address
+    function createLocationAdd(address) {
+        console.log(address)
+        button = "<button class=\"storeButton\" onclick=\"addLocation\">";
+        string = "<p>" + address + "</p>" + button
+        return "<div class=\"buttonContainer\">" + string + "<br></div>"
+    }
+
+    // helper function of stores 'onclick'
+    function addLocation() {
+
     }
 </script>
 <body>
-    <h1>Grocery</h1>
-    <div> <!--this holds all the contents of the page-->
-        <div> <!--nav bar--></div>
-        <div> <!--this is one of the containers-->
-            
-            <label for="grocery">Enter Grocery Item</label>
-            <input type="text" id="input" name="input">
-            <button onclick="displayInput()">Get Input</button>
+    <h1 style="display: flex; justify-content: center; font-family: 'Courier New', Courier, monospace;">Grocery</h1>
+    <div class="" id="global"> <!--this holds all the contents of the page-->
+        <div id="navbar"> <a>LINK ONE</a> <a>LINK TWO</a> <a>LINK THREE</a> <a>LINK FOUR</a> <a>LINK FIVE</a> </div>
+        <div class="mainContainer">
+            <div id="storeContainer"> <!--this is one of the containers-->
+                <label for="store">Enter Store</label>
+                <input type="text" id="address_input" name="stores" placeholder="Store Address">
+                <button onclick="queryAddress()">Find Stores</button>
+                <!--this should call the backend and ask for the availiable locations to display-->
+
+                <!--this should be where queried elemenst are created-->
+                <div id="storeList">
+
+                </div>
+
+            </div>
+            <div id="groceryContainer"> <!--this is one of the containers-->
+                <h5>PLACE HOLDER</h5>
+                <button onclick="displayAddresses()">Test Button</button>
+            </div>
         </div>
-        <div> <!--this is one of the containers--></div>
-        <div> <!--this is one of the containers--></div>
+
+
     </div>
-
-
+            
+        <footer>
+            <div id="bottomLayout">
+                <h1>bunch elements</h1>
+                <h1>bunch elements</h1>
+                <h1>bunch elements</h1>
+                <h1>bunch elements</h1>
+            </div>
+        </footer>
 
 </body>
 </html>>
