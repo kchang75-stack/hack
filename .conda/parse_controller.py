@@ -1,11 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from parsers.trader_joes_parser import TraderJoesParser
-from parsers.target_parser import TargetParser
-from parsers.aldi_parser import AldiParser
-from parsers.fresh_madison_market_parser import FreshMadisonMarketParser
-from parsers.capital_centre_market_parser import CapCentreMarketParser
+from parsers import *
 
 url = input("Enter URL: ")
 
