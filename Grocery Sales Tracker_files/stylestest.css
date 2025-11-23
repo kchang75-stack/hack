@@ -86,48 +86,6 @@ input {
 .dataComponents {
     display: flex;
     justify-content: space-evenly;
-    width: 25%;
-}
-
-#queriedList {
-    border: 1px solid #ccc;
-    overflow-y: auto;         
-    overflow-x: hidden;
-}
-
-#dataTable {
-    width: 100%;
-    display: flex;
-    flex-direction: column;  
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    
-}
-
-.header-row {
-    position: sticky;      
-    top: 0;
-    background-color: white;
-    font-weight: bold;
-    border-bottom: 2px solid #000;
-}
-
-.dataCell {
-    flex: 1;                
-    padding: 4px 8px;
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-    word-break: break-word;
-}
-
-
-.comps {
-    display: flex;
-    
 }
 
 footer {
@@ -140,40 +98,3 @@ footer {
 footer h3 {
     margin: 5px 0;
 }
-
-/* --------- ADDED OVERRIDES TO MAKE TABLE-LIKE LAYOUT --------- */
-
-/* Make each data cell act like a column */
-.dataComponents {
-    flex: 1;                      /* 4 equal columns inside .comps */
-    padding: 4px 8px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #ddd;
-    font-family: 'Courier New', Courier, monospace;
-    word-break: break-word;
-    justify-content: flex-start;  /* override space-evenly */
-}
-
-/* Make each result row fill 100% width */
-.comps {
-    display: flex;
-    width: 100%;
-}
-
-/* FORCE TABLE TO FULL WIDTH */
-#queriedList {
-    width: 100% !important;
-}
-
-#dataTable {
-    width: 100%;
-}
-
-.comps {
-    width: 100%;
-}
-
-.dataComponents {
-    width: 25%;
-}
-

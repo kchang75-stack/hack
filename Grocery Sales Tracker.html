@@ -1,62 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mad Snacks</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylestest.css') }}" />
+<!-- saved from url=(0022)http://10.140.189.214/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Sales Tracker</title>
+    <link rel="stylesheet" href="./Grocery Sales Tracker_files/stylestest.css">
 </head>
 
 <body>
-    <h1 style="font-family: 'Courier New', Courier, monospace;">MAD SNacks</h1>
+    <h1 style="font-family: &#39;Courier New&#39;, Courier, monospace;">Grocery</h1>
 
     <div id="navbar">
-        <!-- <a>LINK ONE</a>
+        <a>LINK ONE</a>
         <a>LINK TWO</a>
         <a>LINK THREE</a>
         <a>LINK FOUR</a>
-        <a>LINK FIVE</a> -->
+        <a>LINK FIVE</a>
     </div>
 
     <div id="searchContainer">
-        <input
-            type="text"
-            id="searchIntake"
-            placeholder="apple, orange, steak"
-        />
+        <input type="text" id="searchIntake" placeholder="apple, orange, steak">
         <button onclick="searchGrocery()">Search</button>
     </div>
 
     <div class="mainContainer">
         <div id="storeContainer">
             <h2>Enter Store</h2>
-            <input type="text" id="address_input" placeholder="Store Address" />
+            <input type="text" id="address_input" placeholder="Store Address">
             <button onclick="queryAddress()">Find Stores</button>
 
             <div id="storeList">STORE LIST</div>
         </div>
 
-        <div id="groceryContainer" style="background-image: url('/static/images/map.png');">
+        <div id="groceryContainer">
+            <h2>PLACE HOLDER</h2>
+            <button onclick="displayAddresses()">Test Button</button>
         </div>
     </div>
 
     <div style="background-color: white;">
-        <div id="queriedList" style="height: 250px; width: 100%;">
-            <div id="dataTable">
-                <!-- Header row -->
-                <div class="row header-row">
-                    <div class="dataCell">Item</div>
-                    <div class="dataCell">Price</div>
-                    <div class="dataCell">Store</div>
-                    <div class="dataCell">Query Value</div>
-                </div>
+        <div id="queriedList" style="height: 250px; width: 50%;">
+            <table id="dataTable" style="width:50px;">
+                <tbody><tr class="dataComponents">
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Store</th>
+                    <th>Query Value</th>
+                </tr>
+            </tbody></table>
 
-                <!-- Data rows will be injected here -->
-                <div id="themIds"></div>
-            </div>
         </div>
+        <div style="width: 50%;"></div>
     </div>
-
     
 
     <script>
@@ -64,10 +59,9 @@
         let item_prices = []
         let store_names = []
         let query_values = []
-        let all_addresses = [];   // 🔹 added so queryAddress/displayAddresses work
 
         async function makeList(input){
-            let element = document.getElementById("themIds");
+            let element = document.getElementById("dataTable");
             // context = "find/" + input
             
             await fetch("/test/" + input)
@@ -83,11 +77,11 @@
 
             let string = ""
             for(i = 0; i < item_names.length; i++) {
-                str1 = "<h5 class=\"dataComponents\">" + item_names[i]+ "</h5>"
-                str2 = "<h5 class=\"dataComponents\">"+ item_prices[i] + "</h5>"
-                str3 = "<h5 class=\"dataComponents\">"+ store_names[i] + "</h5>"
-                str4 = "<h5 class=\"dataComponents\">"+ query_values[i] + "</h5>"
-                string += "<div class=\"comps\">" + str1 + str2 + str3 + str4 + "</div>";
+                str1 = "<th class=\"dataComponents\">" + item_names[i]+ "</th>"
+                str2 = "<th class=\"dataComponents\">"+ item_prices[i] + "</th>"
+                str3 = "<th class=\"dataComponents\">"+ store_names[i] + "</th>"
+                str4 = "<th class=\"dataComponents\">"+ query_values[i] + "</th>"
+                string += "<tr>" + str1 + str2 + str3 + str4 + "</tr>";
             }
 
             element.innerHTML += string;
@@ -125,5 +119,5 @@
             makeList(input);
         }
     </script>
-</body>
-</html>
+
+<div id="hl-aria-live-message-container" aria-live="polite" class="visually-hidden"></div><div id="hl-aria-live-alert-container" role="alert" aria-live="assertive" class="visually-hidden"></div></body></html>
