@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1 style="font-family: 'Courier New', Courier, monospace;">MAD SNacks</h1>
+    <h1 style="font-family: 'Courier New', Courier, monospace;">MAD Snacks!</h1>
 
     <div id="navbar">
         <!-- <a>LINK ONE</a>
@@ -73,7 +73,7 @@
             await fetch("/test/" + input)
                 .then(response => response.json())
                 .then(data => {
-                    // alert("Value from Flask: " + data.value);
+   
                     console.log("RAW DATA:", data);
                     item_names.push(...data.Item_Name);
                     item_prices.push(...data.Item_Price);
